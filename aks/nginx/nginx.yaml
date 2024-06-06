@@ -1,4 +1,9 @@
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: nginx-app
+---
+apiVersion: v1
 kind: Namespace
 metadata:
   name: nginx
@@ -20,6 +25,7 @@ spec:
       labels:
         app: nginx
     spec:
+      serviceAccountName: nginx-app
       containers:
       - name: nginx
         image: nginx:latest
